@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/icons/favicon.ico" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="BTC-SaaS - 拜里斯科技车间管理系统，基于Vue3的企业级后台管理系统" />
+	<meta name="keywords" content="BTC,SaaS,Vue3,TypeScript,企业级,后台管理,车间管理" />
+	<meta name="author" content="BTC Team" />
+	<title>BTC-SaaS 管理系统</title>
+	
+	<!-- 预加载关键资源 -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+	
+	<!-- 加载动画样式 -->
+	<style>
+		#Loading {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #ffffff;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			z-index: 9999;
+			transition: opacity 0.3s ease;
+		}
+		
+		#Loading.dark {
+			background: #000000;
+		}
+		
+		.preload__logo {
+			width: 80px;
+			height: 80px;
+			margin-bottom: 24px;
+			animation: pulse 2s infinite;
+		}
+		
+		.preload__name {
+			font-size: 24px;
+			font-weight: 600;
+			color: #1f2937;
+			margin-bottom: 8px;
+			font-family: 'Inter', sans-serif;
+		}
+		
+		.preload__title {
+			font-size: 16px;
+			color: #6b7280;
+			margin-bottom: 4px;
+			font-family: 'Inter', sans-serif;
+		}
+		
+		.preload__sub-title {
+			font-size: 14px;
+			color: #9ca3af;
+			font-family: 'Inter', sans-serif;
+		}
+		
+		.preload__progress {
+			width: 200px;
+			height: 4px;
+			background: #e5e7eb;
+			border-radius: 2px;
+			margin-top: 24px;
+			overflow: hidden;
+		}
+		
+		.preload__progress-bar {
+			height: 100%;
+			background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+			border-radius: 2px;
+			animation: loading 2s ease-in-out infinite;
+		}
+		
+		#Loading.dark .preload__name {
+			color: #f9fafb;
+		}
+		
+		#Loading.dark .preload__title {
+			color: #d1d5db;
+		}
+		
+		#Loading.dark .preload__sub-title {
+			color: #9ca3af;
+		}
+		
+		#Loading.dark .preload__progress {
+			background: #374151;
+		}
+		
+		@keyframes pulse {
+			0%, 100% {
+				opacity: 1;
+			}
+			50% {
+				opacity: 0.5;
+			}
+		}
+		
+		@keyframes loading {
+			0% {
+				transform: translateX(-100%);
+			}
+			100% {
+				transform: translateX(100%);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="app"></div>
+	
+	<!-- 加载动画 -->
+	<div id="Loading">
+		<div class="preload__logo">
+			<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect width="80" height="80" rx="16" fill="#3b82f6"/>
+				<path d="M20 30h40v20H20V30z" fill="#ffffff"/>
+				<text x="40" y="45" text-anchor="middle" fill="#3b82f6" font-size="12" font-weight="600">BTC</text>
+			</svg>
+		</div>
+		<div class="preload__name">BTC-SaaS</div>
+		<div class="preload__title">正在加载资源...</div>
+		<div class="preload__sub-title">初次加载资源可能需要较多时间，请耐心等待</div>
+		<div class="preload__progress">
+			<div class="preload__progress-bar"></div>
+		</div>
+	</div>
+	
+	<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

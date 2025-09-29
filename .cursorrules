@@ -1,0 +1,139 @@
+# BTC-SaaS 项目开发规则
+
+## 项目概述
+BTC-SaaS 是基于 Cool-Admin-Vue 架构设计的现代化企业级后台管理系统，采用 Vue 3 + TypeScript + Vite 技术栈。
+
+## 核心规范
+
+### 1. 命名规范
+- **组件命名**: 所有自定义组件必须以 `btc-` 前缀命名，如 `btc-button`、`btc-form`
+- **文件命名**: 使用 kebab-case 命名，如 `user-management.vue`
+- **变量命名**: 使用 camelCase，如 `userName`、`isLoading`
+- **常量命名**: 使用 UPPER_SNAKE_CASE，如 `API_BASE_URL`
+
+### 2. 组件开发规范
+- 每个组件必须有独立的目录和 README.md 文档
+- 组件必须使用 TypeScript 编写，提供完整的类型定义
+- 组件 props 必须定义类型和默认值
+- 组件必须支持国际化，使用 i18n 键而非硬编码文本
+
+### 3. 模块化开发
+- 每个功能模块独立目录，包含 config.ts、index.ts
+- 模块间通过事件总线通信，避免直接依赖
+- 所有模块必须支持热更新和按需加载
+
+### 4. 样式规范
+- 优先使用 Tailwind CSS 工具类
+- 全局样式放在 `src/styles/` 目录
+- 避免使用内联样式和组件级样式
+- 支持暗色主题，确保样式一致性
+
+### 5. 代码质量
+- 使用 ESLint 和 Prettier 保证代码风格一致
+- 所有函数和组件必须有完整的 JSDoc 注释
+- 使用 TypeScript 严格模式，避免 any 类型
+- 单元测试覆盖率不低于 80%
+
+### 6. 性能优化
+- 路由组件使用懒加载
+- 大型组件使用 Suspense 和异步组件
+- 图片使用 WebP 格式和懒加载
+- 合理使用缓存和防抖节流
+
+### 7. 安全规范
+- 所有用户输入必须进行验证和过滤
+- 敏感信息不得暴露在客户端
+- 使用 HTTPS 和安全头
+- 实现 CSRF 和 XSS 防护
+
+### 8. 国际化支持
+- 所有文本使用 i18n 键，支持多语言
+- 日期、数字格式化使用国际化 API
+- 文本方向支持 RTL 语言
+
+### 9. 错误处理
+- 统一的错误处理机制
+- 用户友好的错误提示
+- 完整的错误日志记录
+- 优雅的降级处理
+
+### 10. 测试规范
+- 单元测试使用 Vitest
+- E2E 测试使用 Playwright
+- 组件测试使用 Vue Test Utils
+- 测试文件命名：`*.test.ts` 或 `*.spec.ts`
+
+## 技术栈约定
+
+### 核心依赖
+- Vue 3.4+ (Composition API)
+- TypeScript 5.3+
+- Vite 5.0+
+- Pinia 2.1+ (状态管理)
+- Vue Router 4.2+ (路由)
+- Element Plus 2.4+ (UI 组件)
+
+### 开发工具
+- ESLint + Prettier (代码规范)
+- Tailwind CSS (样式框架)
+- Vue I18n (国际化)
+- Axios (HTTP 客户端)
+
+### 构建工具
+- @btc-vue/vite-plugin (自定义插件)
+- @btc-vue/crud (CRUD 组件库)
+- Vue I18n Plugin (国际化插件)
+
+## 开发流程
+
+### 1. 分支管理
+- `main`: 主分支，稳定版本
+- `develop`: 开发分支
+- `feature/*`: 功能分支
+- `hotfix/*`: 紧急修复分支
+
+### 2. 提交规范
+使用 Conventional Commits 规范：
+- `feat`: 新功能
+- `fix`: 修复问题
+- `docs`: 文档更新
+- `style`: 代码格式
+- `refactor`: 重构
+- `test`: 测试
+- `chore`: 构建/工具
+
+### 3. 代码审查
+- 所有代码必须经过 Code Review
+- 确保测试覆盖率
+- 检查性能影响
+- 验证安全性
+
+## 特殊约定
+
+### Cool-Admin 元素替换
+- 所有 `cool` 相关命名必须替换为 `btc`
+- 包名：`@cool-vue/*` → `@btc-vue/*`
+- 组件名：`cl-*` → `btc-*`
+- 配置文件中的 cool 引用必须更新为 btc
+
+### 组件前缀
+- 全局组件：`btc-*`
+- 业务组件：`btc-business-*`
+- 工具组件：`btc-utils-*`
+
+### 目录结构
+- 严格按照 `BTC_SAAS_DIRECTORY_STRUCTURE.md` 执行
+- 模块化组织，每个功能独立目录
+- 插件系统，支持动态扩展
+
+## 注意事项
+
+1. **兼容性**: 支持现代浏览器，IE 不支持
+2. **响应式**: 移动端优先，桌面端适配
+3. **可访问性**: 支持键盘导航和屏幕阅读器
+4. **SEO**: 服务端渲染支持，meta 标签优化
+5. **监控**: 集成错误监控和性能监控
+
+## 更新记录
+
+- 2024-01-XX: 初始版本，基于 Cool-Admin-Vue 架构设计
