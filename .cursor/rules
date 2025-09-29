@@ -1,0 +1,16 @@
+{
+  "style": { "maxFileLines": 300, "maxFunctionLines": 50 },
+  "architecture": {
+    "forbidPatterns": [
+      { "pattern": "apps/web/src/**/pages/**/*.vue", "forbid": ["axios","fetch"], "message": "I/O 必须走 @btc/btc-services" },
+      { "pattern": "packages/btc-mods/**/pages/**/*.vue", "forbid": ["defineComponent\\({\\s*data\\s*\\("], "message": "使用 <script setup> + composables" }
+    ],
+    "enforceLayering": [
+      { "from": "apps/web/src/**", "allow": ["@btc/btc-core/**","@btc/btc-ui/**","@btc/btc-services/**","virtual:btc/*"] }
+    ]
+  },
+  "review": {
+    "requireTestsFor": ["packages/btc-core/**","packages/btc-services/**"],
+    "requireStoriesFor": ["packages/btc-ui/**"]
+  }
+}
