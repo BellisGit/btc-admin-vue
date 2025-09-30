@@ -1,0 +1,21 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"strict": true,
+		"noUnusedLocals": false,  // 允许未使用变量
+		"noUnusedParameters": false,  // 允许未使用参数
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": true,  // 保持索引访问检查
+		"exactOptionalPropertyTypes": false,  // 放宽可选属性类型
+		"noImplicitOverride": true,
+		"noPropertyAccessFromIndexSignature": false,  // 允许索引签名访问
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"strictBindCallApply": true,
+		"strictPropertyInitialization": true,
+		"noImplicitThis": true,
+		"alwaysStrict": true
+	}
+}

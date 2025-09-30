@@ -1,0 +1,134 @@
+// BTC-SaaS 全局变量定义
+// 基于 Element Plus 的设计系统扩展
+
+// 颜色变量
+:root {
+  // 主色调
+  --btc-primary: #3b82f6;
+  --btc-primary-light: #60a5fa;
+  --btc-primary-dark: #1d4ed8;
+  
+  // 辅助色
+  --btc-success: #10b981;
+  --btc-warning: #f59e0b;
+  --btc-error: #ef4444;
+  --btc-info: #06b6d4;
+  
+  // 中性色
+  --btc-gray-50: #f9fafb;
+  --btc-gray-100: #f3f4f6;
+  --btc-gray-200: #e5e7eb;
+  --btc-gray-300: #d1d5db;
+  --btc-gray-400: #9ca3af;
+  --btc-gray-500: #6b7280;
+  --btc-gray-600: #4b5563;
+  --btc-gray-700: #374151;
+  --btc-gray-800: #1f2937;
+  --btc-gray-900: #111827;
+  
+  // 背景色
+  --btc-bg-primary: #ffffff;
+  --btc-bg-secondary: #f8fafc;
+  --btc-bg-tertiary: #f1f5f9;
+  
+  // 文字色
+  --btc-text-primary: #1f2937;
+  --btc-text-secondary: #6b7280;
+  --btc-text-tertiary: #9ca3af;
+  --btc-text-disabled: #d1d5db;
+  
+  // 边框色
+  --btc-border-light: #e5e7eb;
+  --btc-border-base: #d1d5db;
+  --btc-border-dark: #9ca3af;
+  
+  // 阴影
+  --btc-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --btc-shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --btc-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --btc-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --btc-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  
+  // 圆角
+  --btc-radius-sm: 4px;
+  --btc-radius-base: 6px;
+  --btc-radius-md: 8px;
+  --btc-radius-lg: 12px;
+  --btc-radius-xl: 16px;
+  --btc-radius-full: 9999px;
+  
+  // 间距
+  --btc-spacing-xs: 4px;
+  --btc-spacing-sm: 8px;
+  --btc-spacing-base: 12px;
+  --btc-spacing-md: 16px;
+  --btc-spacing-lg: 20px;
+  --btc-spacing-xl: 24px;
+  --btc-spacing-2xl: 32px;
+  --btc-spacing-3xl: 48px;
+  
+  // 字体大小
+  --btc-font-xs: 12px;
+  --btc-font-sm: 14px;
+  --btc-font-base: 16px;
+  --btc-font-lg: 18px;
+  --btc-font-xl: 20px;
+  --btc-font-2xl: 24px;
+  --btc-font-3xl: 30px;
+  --btc-font-4xl: 36px;
+  
+  // 行高
+  --btc-leading-tight: 1.25;
+  --btc-leading-snug: 1.375;
+  --btc-leading-normal: 1.5;
+  --btc-leading-relaxed: 1.625;
+  --btc-leading-loose: 2;
+  
+  // 字重
+  --btc-font-light: 300;
+  --btc-font-normal: 400;
+  --btc-font-medium: 500;
+  --btc-font-semibold: 600;
+  --btc-font-bold: 700;
+  
+  // 过渡
+  --btc-transition-fast: 0.15s ease-in-out;
+  --btc-transition-base: 0.2s ease-in-out;
+  --btc-transition-slow: 0.3s ease-in-out;
+  
+  // Z-index
+  --btc-z-dropdown: 1000;
+  --btc-z-sticky: 1020;
+  --btc-z-fixed: 1030;
+  --btc-z-modal-backdrop: 1040;
+  --btc-z-modal: 1050;
+  --btc-z-popover: 1060;
+  --btc-z-tooltip: 1070;
+  --btc-z-toast: 1080;
+}
+
+// 暗黑模式变量
+.dark {
+  // 背景色
+  --btc-bg-primary: #111827;
+  --btc-bg-secondary: #1f2937;
+  --btc-bg-tertiary: #374151;
+  
+  // 文字色
+  --btc-text-primary: #f9fafb;
+  --btc-text-secondary: #d1d5db;
+  --btc-text-tertiary: #9ca3af;
+  --btc-text-disabled: #6b7280;
+  
+  // 边框色
+  --btc-border-light: #374151;
+  --btc-border-base: #4b5563;
+  --btc-border-dark: #6b7280;
+  
+  // 阴影（暗黑模式下使用更亮的阴影）
+  --btc-shadow-sm: 0 1px 2px 0 rgb(255 255 255 / 0.05);
+  --btc-shadow-base: 0 1px 3px 0 rgb(255 255 255 / 0.1), 0 1px 2px -1px rgb(255 255 255 / 0.1);
+  --btc-shadow-md: 0 4px 6px -1px rgb(255 255 255 / 0.1), 0 2px 4px -2px rgb(255 255 255 / 0.1);
+  --btc-shadow-lg: 0 10px 15px -3px rgb(255 255 255 / 0.1), 0 4px 6px -4px rgb(255 255 255 / 0.1);
+  --btc-shadow-xl: 0 20px 25px -5px rgb(255 255 255 / 0.1), 0 8px 10px -6px rgb(255 255 255 / 0.1);
+}

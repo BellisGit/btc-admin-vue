@@ -1,0 +1,55 @@
+{
+	"name": "@btc-vue/vite-plugin",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "btc-admin、btc-saas builder",
+	"types": "./dist/index.d.ts",
+	"main": "/dist/index.js",
+	"scripts": {
+		"build": "rollup --c --bundleConfigAsCjs",
+		"dev": "rollup --c --bundleConfigAsCjs --watch",
+		"type-check": "tsc --noEmit"
+	},
+	"keywords": [
+		"vite",
+		"plugin",
+		"btc",
+		"vue",
+		"admin",
+		"saas"
+	],
+	"author": "BTC Team",
+	"license": "MIT",
+	"files": [
+		"types/*",
+		"dist/*",
+		"client.d.ts",
+		"package.json"
+	],
+	"peerDependencies": {
+		"@rollup/plugin-typescript": "^11.1.6",
+		"@types/lodash": "^4.17.15",
+		"@types/node": "^20.12.7",
+		"@vue/compiler-sfc": "^3.5.13",
+		"axios": "^1.6.8",
+		"glob": "^10.3.12",
+		"lodash": "^4.17.21",
+		"magic-string": "^0.30.17",
+		"postcss-value-parser": "^4.2.0",
+		"prettier": "^3.4.2",
+		"rollup": "^4.16.2",
+		"svgo": "^3.3.2",
+		"tslib": "^2.6.2",
+		"typescript": "^5.4.5",
+		"vite": "^5.4.14"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/BellisGit/btc-admin-vue.git",
+		"directory": "packages/vite-plugin"
+	},
+	"homepage": "https://btc-admin.com",
+	"bugs": {
+		"url": "https://github.com/BellisGit/btc-admin-vue/issues"
+	}
+}

@@ -1,0 +1,75 @@
+{
+	"name": "@btc-vue/crud",
+	"version": "1.0.0",
+	"description": "BTC-SaaS CRUD 组件库 - 基于 Vue 3 的企业级 CRUD 解决方案",
+	"type": "module",
+	"main": "./dist/index.umd.js",
+	"module": "./dist/index.es.js",
+	"types": "./types/entry.d.ts",
+	"files": [
+		"types",
+		"dist",
+		"index.d.ts",
+		"package.json",
+		"README.md"
+	],
+	"scripts": {
+		"dev": "vite",
+		"build": "vue-tsc && vite build",
+		"preview": "vite preview",
+		"type-check": "vue-tsc --noEmit",
+		"lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
+		"format": "prettier --write src/"
+	},
+	"keywords": [
+		"vue3",
+		"typescript",
+		"crud",
+		"component",
+		"btc",
+		"saas",
+		"admin",
+		"table",
+		"form",
+		"search"
+	],
+	"author": "BTC Team",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/BellisGit/btc-admin-vue.git",
+		"directory": "packages/crud"
+	},
+	"homepage": "https://btc-admin.com",
+	"bugs": {
+		"url": "https://github.com/BellisGit/btc-admin-vue/issues"
+	},
+	"peerDependencies": {
+		"element-plus": "^2.4.0",
+		"lodash-es": "^4.17.21",
+		"vue": "^3.4.0"
+	},
+	"peerDependenciesMeta": {
+		"vue": {
+			"optional": false
+		},
+		"element-plus": {
+			"optional": false
+		},
+		"lodash-es": {
+			"optional": false
+		}
+	},
+	"exports": {
+		".": {
+			"types": "./types/entry.d.ts",
+			"import": "./dist/index.es.js",
+			"require": "./dist/index.umd.js"
+		},
+		"./dist/style.css": "./dist/style.css"
+	},
+	"devDependencies": {
+		"terser": "^5.44.0",
+		"vite-plugin-dts": "^4.5.4"
+	}
+}

@@ -14,6 +14,26 @@ declare module '@btc-vue/vite-plugin' {
 	export * from '@btc-vue/vite-plugin/dist';
 }
 
+// 虚拟模块类型声明
+declare module 'virtual:svg-register' {
+	const svgRegister: any;
+	export default svgRegister;
+}
+
+declare module 'virtual:eps' {
+	const eps: {
+		service: any;
+	};
+	export { eps };
+}
+
+declare module 'virtual:ctx' {
+	const ctx: {
+		modules: string[];
+	};
+	export { ctx };
+}
+
 // 环境变量类型定义
 interface ImportMetaEnv {
 	readonly VITE_APP_TITLE: string;

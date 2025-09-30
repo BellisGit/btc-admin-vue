@@ -1,0 +1,21 @@
+{
+    "name": "BTC-SaaS - 拜里斯科技车间管理系统",
+    "short_name": "BTC-SaaS",
+    "description": "BTC-SaaS - 拜里斯科技车间管理系统，基于Vue3的企业级后台管理系统",
+    "icons": [
+        {
+            "src": "/icons/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#2f3447",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "start_url": "/"
+}

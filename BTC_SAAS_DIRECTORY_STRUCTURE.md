@@ -31,7 +31,6 @@ btc-saas/
 │   └── API.md                         # API 文档
 ├── packages/                          # 包管理目录
 │   ├── btc-crud/                      # BTC CRUD 组件库
-│   ├── crud/                          # Cool CRUD 组件库
 │   └── vite-plugin/                   # 自定义 Vite 插件
 ├── public/                            # 静态资源目录
 │   ├── icons/                         # 图标文件

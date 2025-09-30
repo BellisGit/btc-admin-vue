@@ -185,18 +185,19 @@ src/btc/
 ### 1. 开发文档
 - [架构设计文档](./COOL_ADMIN_ARCHITECTURE_DESIGN.md)
 - [目录结构规划](./BTC_SAAS_DIRECTORY_STRUCTURE.md)
-- [开发指南](./docs/DEVELOPMENT.md)
-- [组件文档](./docs/COMPONENTS.md)
+- [视图构建规范](./BTC_SAAS_VIEW_CONSTRUCTION_SPEC.md)
+- [认证能力包规范](./AUTH_CAPABILITY_COMPLIANCE.md)
+- [TypeScript 验证指南](./TYPESCRIPT_VALIDATION_GUIDE.md)
 
-### 2. 部署文档
-- [部署指南](./docs/DEPLOYMENT.md)
-- [API 文档](./docs/API.md)
-- [配置说明](./docs/CONFIG.md)
+### 2. 组件库文档
+- [组件库总览](./src/components/README.md)
+- [组件清单](./src/components/COMPONENT_INVENTORY.md)
+- [渐进式整合总结](./src/components/GRADUAL_INTEGRATION_SUMMARY.md)
+- [编码规范合规性](./src/components/CODING_STANDARDS_COMPLIANCE.md)
 
-### 3. 用户文档
-- [用户手册](./docs/USER_GUIDE.md)
-- [常见问题](./docs/FAQ.md)
-- [更新日志](./docs/CHANGELOG.md)
+### 3. 文档中心
+- [文档中心](./docs/README.md) - 所有文档的导航入口
+- [文档索引](./DOCUMENTATION_INDEX.md) - 完整的文档索引和导航
 
 ## 贡献指南
 

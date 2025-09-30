@@ -1,0 +1,31 @@
+import { InjectionKey } from 'vue';
+export interface CrudProvide {
+    crud: any;
+    refresh: () => void;
+    add: (row?: any) => void;
+    edit: (row: any) => void;
+    del: (row: any) => void;
+    view: (row: any) => void;
+    save: () => void;
+    close: () => void;
+    resetSearch: () => void;
+    searchSubmit: (params?: any) => void;
+    pageChange: (page: number) => void;
+    sizeChange: (size: number) => void;
+    selectionChange: (selection: any[]) => void;
+    batchDelete: () => void;
+    selection: any;
+    upsert: any;
+    append: any;
+    form: any;
+    formLoading: any;
+    loading: any;
+    data: any;
+    total: any;
+    page: any;
+    size: any;
+    search: any;
+}
+export declare const crudProvideKey: InjectionKey<CrudProvide>;
+export declare function useCrudProvide(): CrudProvide | undefined;
+export declare function useCrudInject(crudProvide: CrudProvide): void;

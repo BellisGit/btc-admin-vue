@@ -1,0 +1,395 @@
+// BTC-SaaS 样式重置
+// 基于现代 CSS 重置最佳实践
+
+// 1. 使用更直观的盒模型
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// 2. 移除默认边距
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// 3. 设置根元素
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3 */
+}
+
+// 4. 移除 body 的默认边距
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  color: var(--btc-text-primary, #1f2937);
+  background-color: var(--btc-bg-primary, #ffffff);
+}
+
+// 5. 标题元素
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+// 6. 链接
+a {
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: none;
+}
+
+// 7. 按钮
+button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  overflow: visible;
+  text-transform: none;
+  -webkit-appearance: button;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+button:focus {
+  outline: none;
+}
+
+button::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+// 8. 输入框
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  overflow: visible;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+// 9. 移除输入框自动填充样式
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  -webkit-text-fill-color: var(--btc-text-primary, #1f2937) !important;
+}
+
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus,
+.dark input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--btc-bg-primary, #111827) inset !important;
+  -webkit-text-fill-color: var(--btc-text-primary, #f9fafb) !important;
+}
+
+// 10. 图片和媒体
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// 11. 表格
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// 12. 列表
+ul,
+ol {
+  list-style: none;
+}
+
+// 13. 引用
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+// 14. 代码
+code,
+kbd,
+samp {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-size: 1em;
+}
+
+// 15. 表单元素
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
+}
+
+// 16. 进度条
+progress {
+  vertical-align: baseline;
+}
+
+// 17. 文本区域
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+// 18. 选择框
+select {
+  text-transform: none;
+}
+
+// 19. 移除 iOS 输入框圆角
+input[type="search"] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+// 20. 移除 Chrome 输入框的黄色边框
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+// 21. 移除 Firefox 输入框的红色边框
+input:invalid {
+  box-shadow: none;
+}
+
+// 22. 移除 IE 输入框的 X 按钮
+input::-ms-clear {
+  display: none;
+}
+
+// 23. 移除 IE 输入框的眼睛按钮
+input::-ms-reveal {
+  display: none;
+}
+
+// 24. 移除数字输入框的上下箭头
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+// 25. 移除日期输入框的日历图标
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+// 26. 移除时间输入框的时钟图标
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+// 27. 移除文件输入框的按钮样式
+input[type="file"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+// 28. 移除范围输入框的默认样式
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-track {
+  background: transparent;
+  border: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+}
+
+input[type="range"]::-moz-range-track {
+  background: transparent;
+  border: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  background: transparent;
+  border: none;
+}
+
+// 29. 移除颜色输入框的默认样式
+input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+// 30. 移除复选框和单选框的默认样式
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+// 31. 移除提交按钮的默认样式
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+// 32. 移除按钮的默认样式
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+// 33. 移除选择框的默认样式
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+// 34. 移除文本区域的默认样式
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  resize: none;
+}
+
+// 35. 移除链接的默认样式
+a {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// 36. 移除图片的默认样式
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+// 37. 移除表格的默认样式
+table {
+  -webkit-border-horizontal-spacing: 0;
+  -webkit-border-vertical-spacing: 0;
+}
+
+// 38. 移除列表的默认样式
+ul,
+ol {
+  -webkit-padding-start: 0;
+  -moz-padding-start: 0;
+  padding-inline-start: 0;
+}
+
+// 39. 移除引用的默认样式
+blockquote {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+// 40. 移除代码的默认样式
+code,
+kbd,
+samp {
+  -webkit-font-feature-settings: normal;
+  font-feature-settings: normal;
+  -webkit-font-variant-ligatures: normal;
+  font-variant-ligatures: normal;
+}
