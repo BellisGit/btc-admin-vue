@@ -34,13 +34,21 @@ const cachedViews = computed(() => {
 <style lang="scss" scoped>
 .btc-views {
   flex: 1;
-  height: 100%;
   overflow: hidden;
+  margin: 0 10px 10px 10px;
+  width: calc(100% - 20px);
+  box-sizing: border-box;
+  border-radius: 6px;
+  position: relative;
+
+  :deep(.el-scrollbar__view) {
+    height: 100%;
+  }
 
   &__container {
     padding: 16px;
     min-height: 100%;
-    background-color: var(--el-bg-color-page);
+    background-color: var(--el-bg-color);
   }
 }
 

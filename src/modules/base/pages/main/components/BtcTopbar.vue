@@ -1,6 +1,6 @@
 <template>
   <div class="btc-topbar">
-    <div class="btc-comm__icon mr-[10px]" @click="app.fold()">
+    <div class="btc-comm__icon btc-topbar__fold-btn" @click="app.fold()">
       <btc-svg name="fold" v-if="app.isFold" />
       <btc-svg name="expand" v-else />
     </div>
@@ -11,6 +11,10 @@
     <ul class="btc-topbar__tools">
       <li v-for="(item, index) in toolbarComponents" :key="index">
         <component :is="item.component" />
+      </li>
+      <!-- 语言切换 -->
+      <li>
+        <BtcLangSwitcher />
       </li>
     </ul>
 
@@ -23,7 +27,7 @@
         @command="onCommand"
       >
         <div class="btc-topbar__user">
-          <el-text class="mr-[10px]">{{ userDisplayName }}</el-text>
+          <el-text class="btc-topbar__user-name">{{ userDisplayName }}</el-text>
           <el-avatar :size="26" :src="userAvatar" :icon="UserFilled" />
         </div>
 
@@ -61,6 +65,8 @@ import { useBtc } from '/@/btc';
 import { ElMessageBox } from 'element-plus';
 import { UserFilled } from '@element-plus/icons-vue';
 import { useI18n } from 'vue-i18n';
+import BtcLangSwitcher from '../../../components/toolbar/BtcLangSwitcher.vue';
+import { module } from '/@/btc';
 
 defineOptions({
   name: 'BtcTopbar'
@@ -120,8 +126,31 @@ const toolbar = reactive({
   list: [] as any[],
 
   async init() {
-    // 暂时返回空数组，后续可以根据模块系统动态加载
-    this.list = [];
+    // 从模块系统中获取工具栏组件
+    const toolbarComponents = [];
+    
+    for (const m of module.list) {
+      if (m.enable !== false && m.toolbar) {
+        const { component, order = 0 } = m.toolbar;
+        
+        if (component) {
+          try {
+            const comp = await (isFunction(component) ? component() : component);
+            const componentInstance = comp.default || comp;
+            
+            toolbarComponents.push({
+              component: markRaw(componentInstance),
+              order
+            });
+          } catch (error) {
+            console.warn(`Failed to load toolbar component from module ${m.name}:`, error);
+          }
+        }
+      }
+    }
+    
+    // 按 order 排序
+    this.list = orderBy(toolbarComponents, 'order', 'desc');
   }
 });
 
@@ -152,16 +181,24 @@ onMounted(() => {
 
   &__tools {
     display: flex;
+    align-items: center;
     margin-right: 10px;
+    gap: 8px;
 
     & > li {
       display: flex;
       justify-content: center;
       align-items: center;
       list-style: none;
-      height: 45px;
+      height: 26px;
       cursor: pointer;
-      margin-left: 10px;
+      
+      // 确保每个 li 内的组件都有正确的间距
+      > * {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
     }
   }
 
@@ -179,10 +216,39 @@ onMounted(() => {
     }
   }
 
+  &__fold-btn {
+    margin-right: 10px;
+  }
+
+  &__user-name {
+    margin-right: 10px;
+  }
+
   :deep(.btc-comm__icon) {
     &:hover {
       border-color: var(--el-color-primary);
       background-color: transparent;
+    }
+  }
+
+  // 响应式设计
+  @media only screen and (max-width: 768px) {
+    padding: 0 8px;
+    
+    &__tools {
+      margin-right: 8px;
+      
+      & > li {
+        margin-left: 8px;
+      }
+    }
+    
+    &__user {
+      padding: 4px 4px 4px 8px;
+      
+      .el-text {
+        display: none; // 在小屏幕上隐藏用户名
+      }
     }
   }
 }

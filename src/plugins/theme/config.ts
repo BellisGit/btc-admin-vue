@@ -1,6 +1,7 @@
 import { type ModuleConfig } from '/@/btc';
 import 'element-plus/theme-chalk/dark/css-vars.css';
 import './static/css/index.scss';
+import { t } from '/#/i18n';
 import { useTheme } from './hooks';
 
 export default (): ModuleConfig => {
@@ -20,42 +21,42 @@ export default (): ModuleConfig => {
 			// 主题列表
 			list: [
 				{
-					label: '默认',
+					label: t('默认'),
 					name: 'default',
 					color: '#4165d7'
 				},
 				{
-					label: '翠绿',
+					label: t('翠绿'),
 					name: 'cuilv',
 					color: '#51C21A'
 				},
 				{
-					label: '紫檀',
+					label: t('紫檀'),
 					name: 'zitan',
 					color: '#d0378d'
 				},
 				{
-					label: '金橙',
+					label: t('金橙'),
 					name: 'jincheng',
 					color: '#FFA500'
 				},
 				{
-					label: '樱桃',
+					label: t('樱桃'),
 					name: 'yingtao',
 					color: '#FF69B4'
 				},
 				{
-					label: '薄荷',
+					label: t('薄荷'),
 					name: 'bohe',
 					color: '#3EB489'
 				},
 				{
-					label: '青灰',
+					label: t('青灰'),
 					name: 'qinghui',
 					color: '#708090'
 				},
 				{
-					label: '珊瑚',
+					label: t('珊瑚'),
 					name: 'shanhu',
 					color: '#FF4500'
 				}
@@ -67,8 +68,8 @@ export default (): ModuleConfig => {
 
 		label: '主题',
 		description: '自定义主色、菜单分组、暗黑模式',
-		author: 'BTC-SaaS',
+		author: 'COOL',
 		version: '1.0.0',
-		updateTime: '2024-12-29'
+		updateTime: '2024-07-22'
 	};
 };

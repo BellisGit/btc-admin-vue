@@ -1,23 +1,23 @@
 <template>
-	<div class="cl-comm__icon" @click="open">
-		<cl-svg name="theme" />
+	<div class="btc-comm__icon" @click="open">
+		<btc-svg name="theme" />
 	</div>
 
-	<div class="cl-comm__icon ml-[10px]" @click="setDark">
-		<cl-svg :name="isDark ? 'light' : 'dark'" />
+	<div class="btc-comm__icon ml-[10px]" @click="setDark">
+		<btc-svg :name="isDark ? 'light' : 'dark'" />
 	</div>
 
 	<el-drawer
 		v-model="visible"
-		title="设置主题"
+		:title="$t('设置主题')"
 		size="350px"
 		modal-class="drawer-theme"
 		append-to-body
 	>
-		<div class="cl-theme__drawer">
+		<div class="btc-theme__drawer">
 			<el-form label-position="top">
-				<el-form-item label="推荐">
-					<ul class="cl-theme__comd">
+				<el-form-item :label="$t('推荐')">
+					<ul class="btc-theme__comd">
 						<li v-for="(item, name) in themes" :key="name" @click="setComd(item)">
 							<div
 								class="w"
@@ -33,16 +33,16 @@
 					</ul>
 				</el-form-item>
 
-				<el-form-item label="自定义主色">
+				<el-form-item :label="$t('自定义主色')">
 					<el-color-picker v-model="form.color" @change="setColor" />
 					<el-text size="small" class="ml-[10px]">{{ form.color }}</el-text>
 				</el-form-item>
 
-				<el-form-item label="菜单分组显示">
+				<el-form-item :label="$t('菜单分组显示')">
 					<el-switch v-model="form.theme.isGroup" @change="setGroup" />
 				</el-form-item>
 
-				<el-form-item label="转场动画">
+				<el-form-item :label="$t('转场动画')">
 					<el-switch
 						v-model="form.theme.transition"
 						active-value="slide"
@@ -57,16 +57,20 @@
 
 <script lang="ts" setup>
 defineOptions({
-	name: 'cl-theme'
+	name: 'btc-theme'
 });
 
 import { reactive, ref } from 'vue';
 import { Check } from '@element-plus/icons-vue';
 import { ElMessage } from 'element-plus';
+import { useBase } from '/$/base';
 import { useDark } from '@vueuse/core';
+import { useI18n } from 'vue-i18n';
 import { assign } from 'lodash-es';
 import { useTheme } from '../hooks';
 
+const { menu } = useBase();
+const { t } = useI18n();
 const { theme, setTheme, changeDark, themes } = useTheme();
 
 // 是否暗黑模式
@@ -99,7 +103,7 @@ function setColor(color: any) {
 
 // 设置暗黑模式
 function setDark(el: any) {
-	changeDark(el.srcElement, !isDark.value, () => {
+	changeDark(el.currentTarget || el.target || el, !isDark.value, () => {
 		isDark.value = !isDark.value;
 		setTheme({ color: form.color, dark: isDark.value });
 	});
@@ -110,12 +114,13 @@ function setComd(item: any) {
 	assign(form.theme, item);
 	form.color = item.color;
 	setTheme(item);
-	ElMessage.success(`切换主题: ${item.label}`);
+	ElMessage.success(`${t('切换主题')}: ${item.label}`);
 }
 
 // 设置分组
 function setGroup(val: any) {
 	setTheme({ isGroup: val });
+	menu.setMenu();
 }
 
 // 设置转场动画
@@ -125,7 +130,7 @@ function setTransition(val: any) {
 </script>
 
 <style lang="scss">
-.cl-theme {
+.btc-theme {
 	&-dark {
 		width: 45px;
 		margin-left: 10px;

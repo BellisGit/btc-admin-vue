@@ -1,12 +1,14 @@
 import { defineStore } from 'pinia';
 import { computed, reactive, ref } from 'vue';
 import { module, storage } from '/@/btc';
+import { useBase } from '/$/base';
 import { useDark } from '@vueuse/core';
 import { mix } from '../utils';
 import { assign } from 'lodash-es';
 import { config } from '/@/config';
 
 export const useTheme = defineStore('theme', () => {
+	const { app } = useBase();
 	const isDark = useDark();
 	const { options } = module.get('theme');
 
@@ -85,11 +87,21 @@ export const useTheme = defineStore('theme', () => {
 		// 菜单分组显示
 		if (isGroup !== undefined) {
 			theme.isGroup = isGroup;
+			app.set({
+				menu: {
+					isGroup
+				}
+			});
 		}
 
 		// 转场动画
 		if (transition !== undefined) {
 			theme.transition = transition;
+			app.set({
+				router: {
+					transition
+				}
+			});
 		}
 
 		storage.set('theme', theme);
@@ -97,31 +109,26 @@ export const useTheme = defineStore('theme', () => {
 
 	// 切换暗黑模式
 	function changeDark(el: Element, isDark: boolean, cb: () => void) {
-		// @ts-ignore
-		const transition = document.startViewTransition(() => {
+		// 防止并发触发（双击、极快切换）
+		if ((document as any)._vtRunning) return;
+		
+		const doSwitch = async () => {
+			// 执行主题切换回调
 			cb();
-		});
+			// 使用 Promise.resolve() 强制微任务，让布局更新
+			await Promise.resolve();
+		};
 
-		transition.ready.then(() => {
-			const rect = el.getBoundingClientRect();
-			const x = rect.left + rect.width / 2;
-			const y = rect.top + rect.height / 2;
-			const endRadius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-			const clipPath = [
-				`circle(0 at ${x}px ${y}px)`,
-				`circle(${endRadius}px at ${x}px ${y}px)`
-			];
-			document.documentElement.animate(
-				{
-					clipPath: isDark ? clipPath.reverse() : clipPath
-				},
-				{
-					duration: 400,
-					pseudoElement: isDark
-						? '::view-transition-old(root)'
-						: '::view-transition-new(root)'
-				}
-			);
+		// 检查浏览器是否支持 View Transition API
+		if (!('startViewTransition' in document)) {
+			return doSwitch(); // 兼容不支持的浏览器
+		}
+
+		(document as any)._vtRunning = true;
+		// 使用 call 方法确保正确的 this 上下文
+		const transition = (document as any).startViewTransition.call(document, doSwitch);
+		transition.finished.finally(() => { 
+			(document as any)._vtRunning = false; 
 		});
 	}
 

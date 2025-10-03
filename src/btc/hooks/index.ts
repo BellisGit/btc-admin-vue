@@ -1,6 +1,7 @@
 import { getCurrentInstance, type Ref, reactive, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { service } from '../service';
+import { getBrowser } from '../utils';
 
 // HMR 数据存储
 const hmrData = ref<Record<string, any>>({});
@@ -68,6 +69,7 @@ export function useBtc() {
 		service,
 		route: useRoute(),
 		router: useRouter(),
+		browser: getBrowser(),
 		...useRefs()
 	};
 }

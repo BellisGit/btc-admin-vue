@@ -75,6 +75,7 @@ input {
 }
 
 // 通用图标样式
+.btc-comm__icon,
 .cl-comm__icon {
 	display: flex;
 	align-items: center;
@@ -89,12 +90,37 @@ input {
 	cursor: pointer;
 	flex-shrink: 0;
 
-	.btc-svg {
+	.btc-svg,
+	.cl-svg {
 		font-size: 16px;
 		color: var(--el-text-color-primary);
 	}
 
 	&:hover {
 		background-color: var(--el-fill-color-light);
+	}
+}
+
+// 防止主题切换时的闪烁
+.btc-topbar,
+.btc-main-layout,
+.btc-sidebar {
+	transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+// 确保主题切换时所有元素同步更新
+html.dark {
+	.btc-topbar {
+		background-color: var(--el-bg-color);
+		border-bottom-color: var(--el-border-color-extra-light);
+	}
+	
+	.btc-main-layout {
+		background-color: var(--el-bg-color);
+	}
+	
+	.btc-sidebar {
+		background-color: var(--slider-bg-color);
+		border-right-color: var(--el-border-color-extra-light);
 	}
 }

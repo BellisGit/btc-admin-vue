@@ -51,16 +51,22 @@ const breadcrumbList = computed(() => {
 
 <style lang="scss" scoped>
 .btc-breadcrumb {
-  padding: 8px 16px;
-  background-color: var(--el-bg-color-page);
-  border-bottom: 1px solid var(--el-border-color-extra-light);
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: var(--el-bg-color);
+  margin-bottom: 10px;
+  min-height: 40px;
+  box-sizing: border-box;
   
   :deep(.el-breadcrumb) {
-    font-size: 14px;
+    font-size: 13px;
+    line-height: 1;
     
     .el-breadcrumb__item {
       .el-breadcrumb__inner {
         color: var(--el-text-color-regular);
+        transition: color 0.2s;
         
         &:hover {
           color: var(--el-color-primary);
@@ -73,6 +79,10 @@ const breadcrumbList = computed(() => {
           font-weight: 500;
         }
       }
+    }
+    
+    .el-breadcrumb__separator {
+      color: var(--el-text-color-secondary);
     }
   }
 }

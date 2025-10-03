@@ -1,19 +1,93 @@
-::view-transition-new(root),
-::view-transition-old(root) {
+// 让顶栏被单独快照和动画
+.btc-topbar {
+	// 只有需要动画的元素才命名，避免多层遮罩
+	view-transition-name: site-header !important;
+	will-change: clip-path, transform, opacity !important;
+	position: sticky;
+	top: 0;
+	z-index: 900;
+}
+
+// View Transition API 配置
+::view-transition {
+	pointer-events: none;
+}
+
+::view-transition-group(root) {
+	animation-duration: 500ms;
+	animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	background: transparent;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
 	animation: none !important;
+	mix-blend-mode: normal;
+	background: transparent;
+}
+
+// 为 site-header 命名组定义"圆弧扩散"
+// old -> 收缩淡出； new -> 从圆心扩散显现
+::view-transition-old(site-header) {
+	animation: header-old 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+	transform-origin: 94% 22%;
+}
+
+::view-transition-new(site-header) {
+	animation: header-new 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+	transform-origin: 94% 22%;
+}
+
+// 关键帧：用 clip-path(circle()) 实现圆弧/扫光效果
+@keyframes header-old {
+	0% {
+		clip-path: circle(200% at 94% 22%); /* 完全覆盖 */
+		opacity: 1;
+		transform: translateY(0);
+	}
+	100% {
+		clip-path: circle(0% at 94% 22%); /* 收缩到一个点并消失 */
+		opacity: 0;
+		transform: translateY(-6px) scale(0.99);
+	}
+}
+
+@keyframes header-new {
+	0% {
+		clip-path: circle(0% at 94% 22%);
+		opacity: 0;
+		transform: translateY(-6px) scale(0.99);
+	}
+	100% {
+		clip-path: circle(200% at 94% 22%);
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+// 只让 CSS 变量的消费者平滑过渡，避免把 overlay 也拖下水
+:root, html.dark {
+	transition: 
+		background-color 300ms ease,
+		color 300ms ease,
+		border-color 300ms ease;
+}
+
+// 禁用某些元素的过渡效果以避免冲突
+.el-loading-mask,
+.el-overlay,
+.el-drawer,
+.el-dialog {
+	transition: none !important;
 }
 
 html.dark {
-	&::view-transition-old(root) {
-		z-index: 100;
-	}
-
-	.app-slider {
+	.btc-sidebar {
 		--slider-bg-color: var(--el-bg-color);
 		--slider-text-color: var(--el-text-color-primary);
 	}
 
-	.cl-crud {
+	.btc-crud {
 		background-color: var(--el-bg-color);
 
 		.el-table {

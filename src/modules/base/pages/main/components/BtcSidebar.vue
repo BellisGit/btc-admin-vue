@@ -58,6 +58,7 @@ const keyWord = ref('');
   height: 100%;
   background-color: var(--slider-bg-color);
   border-right: 1px solid var(--el-border-color-extra-light);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 
   &__logo {
     display: flex;

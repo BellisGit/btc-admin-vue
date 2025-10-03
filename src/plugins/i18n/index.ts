@@ -17,4 +17,7 @@ export const i18n = createI18n({
 	globalInjection: true // 全局注入 $t 函数
 });
 
+// 导出 t 函数
+export const t = i18n.global.t;
+
 export default i18n;
